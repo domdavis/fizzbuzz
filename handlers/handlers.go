@@ -38,11 +38,6 @@ func FizzBuzz(urls ...string) microservice.Handler {
 func handler(w http.ResponseWriter, r *http.Request, f processor) {
 	in := mux.Vars(r)[microservice.In]
 
-	if in == "" {
-		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte("Internal Server Error"))
-	}
-
 	if i, err := strconv.Atoi(in); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(fmt.Sprintf("Invalid input: %s", in)))
